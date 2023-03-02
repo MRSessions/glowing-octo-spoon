@@ -1,6 +1,0 @@
-name: dotnet6.0
-channels:
-  - conda-forge
-  - defaults
-dependencies:
-  - dotnet=6.0
