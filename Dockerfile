@@ -1,21 +1,12 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0-jammy
+# FROM mcr.microsoft.com/dotnet/sdk:7.0-jammy
 
-# RUN apt update \
-#     && apt install -y --no-install-recommends \
-#     wget \
-#     # python3.6 \
-#     # software-properties-common \
-#     # Cleanup
-#     && rm -rf /var/lib/apt/lists/*
+# RUN curl -kv --output miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-py310_23.1.0-1-Linux-x86_64.sh
 
-RUN apt update
-RUN apt install software-properties-common -y
-RUN add-apt-repository ppa:deadsnakes/ppa
-# RUN apt-add-repository -r ppa:deadsnakes/ppa
-RUN apt update
-RUN DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends python3.9 python3-pip
+# #old https://repo.anaconda.com/archive/Anaconda3-5.3.1-Linux-x86_64.sh
 
-RUN python3 -m pip install --no-cache-dir notebook jupyterlab
+# #new https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
+
+FROM jupyter/scipy-notebook:e407f93c8dcc
 
 ARG NB_USER=jovyan
 ARG NB_UID=1000
@@ -28,13 +19,7 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
-COPY . ${HOME}
+COPY ./FizzBuzz.ipynb ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
-
-# Install .NET kernel
-RUN dotnet tool install -g --add-source "https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json" Microsoft.dotnet-interactive
-ENV PATH="/${HOME}/.dotnet/tools:${PATH}"
-ENV DOTNET_CLI_TELEMETRY_OPTOUT=1
-RUN dotnet interactive jupyter install
