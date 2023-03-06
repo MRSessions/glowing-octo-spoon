@@ -38,7 +38,7 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
-COPY ./FizzBuzz.ipynb ${HOME}
+COPY ./*.ipynb ${HOME}
 USER root
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
