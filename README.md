@@ -11,3 +11,7 @@ Testing for ipynb .NET Interactive Notebooks
 ## Palindrome Number Challenge
 
 [![Binder](https://img.shields.io/badge/Launch-Binder-5a96c1?style=for-the-badge&logo=jupyter)](https://mybinder.org/v2/gh/MRSessions/glowing-octo-spoon/HEAD?urlpath=%2Ftree%2Fhome%2Fjovyan%2FPalindromeNumber.ipynb)
+
+## Scratch Notebook (Blank)
+
+[![Binder](https://img.shields.io/badge/Launch-Binder-5a96c1?style=for-the-badge&logo=jupyter)](https://mybinder.org/v2/gh/MRSessions/glowing-octo-spoon/HEAD?urlpath=%2Ftree%2Fhome%2Fjovyan%2Fscratch-notebook.ipynb)
